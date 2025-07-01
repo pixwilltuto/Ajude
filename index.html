@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ajude com uma doação</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .pix-box {
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 520px;
+      width: 100%;
+    }
+
+    .pix-box h2 {
+      font-size: 28px;
+      color: #2d3436;
+      margin-bottom: 20px;
+    }
+
+    .pix-box p {
+      font-size: 18px;
+      color: #444;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .pix-key {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      background: #e3f2fd;
+      padding: 15px;
+      border-radius: 10px;
+      word-break: break-word;
+      color: #0d47a1;
+    }
+
+    button, a.botao-wpp, a.botao-canal {
+      display: block;
+      margin: 10px auto;
+      padding: 14px 30px;
+      font-size: 18px;
+      color: white;
+      background-color: #007bff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s;
+      max-width: 300px;
+    }
+
+    button:hover,
+    a.botao-wpp:hover {
+      background-color: #0056b3;
+    }
+
+    .mensagem {
+      color: green;
+      font-size: 16px;
+      margin-top: 15px;
+      display: none;
+    }
+
+    .emoji {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 480px) {
+      .pix-box {
+        padding: 25px 20px;
+      }
+      .pix-box h2 {
+        font-size: 22px;
+      }
+      .pix-box p {
+        font-size: 16px;
+      }
+      .pix-key {
+        font-size: 16px;
+        padding: 10px;
+      }
+      button,
+      a.botao-wpp {
+        font-size: 16px;
+        padding: 12px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="pix-box">
+    <div class="emoji">🎥💖</div>
+    <h2>Esse vídeo te ajudou?</h2>
+    <p>Se o conteúdo foi útil para você, considere apoiar com uma doação de <strong>R$ 1,00</strong> ou qualquer valor via PIX.<br>
+    Sua ajuda me permite continuar criando vídeos e ajudando mais pessoas!<br><br>
+    <strong>✨ Quem doar poderá ter o nome mencionado nos próximos vídeos como forma de agradecimento!</strong></p>
+
+    <div id="chavePix" class="pix-key">2c9891ac-9eb4-4780-82e6-24d5f81b4384</div>
+    <textarea id="areaTemporaria" style="position: absolute; left: -9999px;"></textarea>
+
+    <button onclick="copiarPix()">📋 Copiar Chave PIX</button>
+
+    <a class="botao-wpp" target="_blank"
+       href="https://wa.me/558894625094?text=Olá%2C+fiz+uma+doação+via+PIX+e+gostaria+de+enviar+meu+nome+para+ser+agradecido+no+vídeo.">
+      💬 Enviar Nome Via WhatsApp Para Ser Citado Nos Vídeos Do Canal Em Forma De Agradecimento
+    </a>
+
+
+ <a class="botao-canal" target="_blank" href="https://www.youtube.com/channel/UCPwCp2sCjZTnkFbm4BwgIxg">
+      🔔 Ir para o Canal
+    </a>
+
+    <div class="mensagem" id="mensagem">✅ Chave Copiada Com Sucesso!</div>
+  </div>
+
+  <script>
+    function copiarPix() {
+      const texto = document.getElementById("chavePix").innerText;
+      const area = document.getElementById("areaTemporaria");
+
+      area.value = texto;
+      area.select();
+      area.setSelectionRange(0, 99999);
+
+      try {
+        const sucesso = document.execCommand("copy");
+        if (sucesso) {
+          document.getElementById("mensagem").style.display = "block";
+          setTimeout(() => {
+            document.getElementById("mensagem").style.display = "none";
+          }, 2000);
+        } else {
+          alert("Não Foi Possível Copiar. Copie Manualmente.");
+        }
+      } catch (err) {
+        alert("Erro Ao Copiar: " + err);
+      }
+    }
+  </script>
+
+</body>
+</html>
